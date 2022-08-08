@@ -178,7 +178,7 @@ body {
   border-radius: 50%;
 }
 .overviewDes {
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 5px;
   color: #a7a7a7;
 }
@@ -240,5 +240,8 @@ body {
   }
   .grid-item {
     margin-bottom: 20px;
+  }
+  .overviewDes {
+    font-size: 10px;
   }
 }
