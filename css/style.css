@@ -177,6 +177,11 @@ body {
   object-fit: cover;
   border-radius: 50%;
 }
+.overviewDes {
+  font-size: 12px;
+  margin-top: 5px;
+  color: #a7a7a7;
+}
 
 /* chart style  */
 .tab-chart span {
