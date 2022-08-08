@@ -1,6 +1,6 @@
-# VueDashboard [(https://shvuedashboard.netlify.app/)]
+# [Admin Dashboard](https://shvuedashboard.netlify.app/")
 
 > This is a beautiful admin dashboard Design
 > I used HTML,CSS ,JavaSCript, chart.js, Vue Js
-
-## Examples
+> I create custom classes as like bootstrap to make my work easy
+> the desing is full responsive
