@@ -1,4 +1,4 @@
-# [Admin Dashboard](https://shvuedashboard.netlify.app/){:target="\_blank"}
+# [Admin Dashboard](https://shvuedashboard.netlify.app/)
 
 
 > This is a Admin dashboard template.
