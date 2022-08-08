@@ -1,4 +1,4 @@
-# [Admin Dashboard](https://shvuedashboard.netlify.app"){:target="_blank" rel="noopener"}
+# [Admin Dashboard](https://shvuedashboard.netlify.app")
 
 > This is a Admin dashboard template.
 > I used HTML,CSS ,JavaSCript, chart.js, Vue Js.
