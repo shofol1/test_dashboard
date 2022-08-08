@@ -122,7 +122,17 @@ body {
   object-fit: cover;
   border-radius: 50%;
 }
-
+.supParent {
+  position: relative;
+}
+.supText {
+  color: var(--white);
+  position: absolute;
+  top: 7px px;
+  left: 21px;
+  font-size: 10px;
+  background-color: rgb(0, 111, 214);
+}
 /* main section design start  */
 .main {
   position: absolute;
