@@ -5,81 +5,198 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Dashboard</title>
+    <!-- main css -->
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+  <div id="app">
     <div class="container">
-      <!-- navigation start  -->
-      <div class="navigation">
-        <ul>
-          <li>
-            <img src="./assets/logo.png" class="logo" alt="" />
-          </li>
-          <li>
-            <a href="">
-              <span class="icon"
-                ><ion-icon name="home-outline"></ion-icon
-              ></span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <span class="icon"
-                ><ion-icon name="people-outline"></ion-icon
-              ></span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <span class="icon"
-                ><ion-icon name="videocam-outline"></ion-icon
-              ></span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <span class="icon"
-                ><ion-icon name="aperture-outline"></ion-icon
-              ></span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <span class="icon"
-                ><ion-icon name="gift-outline"></ion-icon
-              ></span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <span class="icon"
-                ><ion-icon name="book-outline"></ion-icon
-              ></span>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <span class="icon"
-                ><ion-icon name="grid-outline"></ion-icon
-              ></span>
-            </a>
-          </li>
-          <li class="bottom">
-            <a href="">
-              <ion-icon name="notifications-outline"></ion-icon>
-            </a>
-          </li>
-          <div class="profile">
-            <a href=""> <img src="./assets/user.jpg" class="user" alt="" /></a>
-          </div>
-        </ul>
+        <!-- navigation start  -->
+        <div class="navigation" :class="{active:makeActive}">
+          <ul>
+            <li>
+              <img src="./assets/logo.png" class="logo" alt="" />
+            </li>
+            <li>
+              <a href="">
+                <span class="icon"
+                  ><ion-icon name="home-outline"></ion-icon
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <span class="icon"
+                  ><ion-icon name="people-outline"></ion-icon
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <span class="icon"
+                  ><ion-icon name="videocam-outline"></ion-icon
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <span class="icon"
+                  ><ion-icon name="aperture-outline"></ion-icon
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <span class="icon"
+                  ><ion-icon name="gift-outline"></ion-icon
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <span class="icon"
+                  ><ion-icon name="book-outline"></ion-icon
+                ></span>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <span class="icon"
+                  ><ion-icon name="grid-outline"></ion-icon
+                ></span>
+              </a>
+            </li>
+            <li class="bottom">
+              <a href="">
+                <ion-icon name="notifications-outline"></ion-icon>
+              </a>
+            </li>
+            <div class="profile">
+              <a href=""> <img src="./assets/user.jpg" class="user" alt="" /></a>
+            </div>
+          </ul>
+        </div>
+        <!-- navigation end  -->
       </div>
-      <!-- navigation end  -->
       <!-- main section start  -->
+      <main>
+        <div class="main"  :class="{active:makeActive}">
+          <div class="toggle"  v-on:click="makeActive=!makeActive"
+          >
+            <ion-icon name="menu-outline" class="toggleIcon"></ion-icon>
+          </div>
+          <div class="mainContent">
+            <h3 class="welcome-text p-2">Good Morning {{user.name}}</h3>
+            <div class="grid-container p-2" >
+              <div class="d-flex justify-between shadow p-3" v-for="(totalInfo,i) in totalInfos">
+                  <div class="grid-des">
+                      <p class="mb">{{ totalInfo.title }}</p>
+                      <h3>{{ totalInfo.total }}<span class="euroIcon" v-if="totalInfo.title == 'total revenue'"
+                        >€
+                      </span></h3>
+                  </div>
+                  <div >
+                      <ion-icon :name="totalInfo.iconClass" class="grid-icon p-2"></ion-icon>
+                  </div>
+              </div>
+         
+            </div>
+<!-- chart start  -->
 
+
+          <div class="chartContainer ">
+            <div class="shadow p-2">
+               <div class="top-chart d-flex justify-between mb">
+                <h4>User Activity</h4>
+                <div class="tab-chart">
+             
+                    <span href=""  >Daily</span>
+                    <span href="" class="active_tab">Weekly</span>
+                    <span href="">Monthly</span>
+                </div>
+        
+               </div>
+               <div class="middle ">
+                <div class="div d-flex g-10">
+                    <h3>{{ userActivity.total }}</h3>
+                    <span class="d-flex align-items-center g-5 desWrapper">
+                        <ion-icon name="arrow-up-circle-outline"></ion-icon>
+                       <div class="des">
+                        <h4>{{ userActivity.percentage }}</h4>
+                        <p>Than Last Day</p>
+                       </div>
+                    </span>
+                </div>
+              
+               </div>
+               <canvas id="myChart" ></canvas>
+            </div>
+            
+          </div>
+
+
+<!-- chart end  -->
+
+
+            <!-- //active overview section start  -->
+            <div class="activeOverview p-2 mt">
+                <div class="grid-activeOverview">
+                    <div class="grid-activeOverview-item mb shadow p-2" >
+                        <h3>Most Active</h3>
+                        <div class="sub-grid mb p-2" v-for="(mActive, i) in mostActive">
+                            <img :src=" mActive.img" alt="" class="members-img">
+                       
+                        <div>
+                            <h5>{{   mActive.name }}</h5>
+                            <p style="color: #a7a7a7;">{{ mActive.active }}<span style="margin-left: 5px;">hrs</span></p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="grid-activeOverview-item mb shadow p-2" >
+                        <h3>Top Diamond</h3>
+                        <div class="sub-grid mb p-2" v-for="(mActive, i) in topDiamonds">
+                            <img :src=" mActive.img" alt="" class="members-img">
+                       
+                        <div>
+                            <h5>{{   mActive.name }}</h5>
+                            <p style="color: #a7a7a7;">{{ mActive.diamond }} <span>Diamond</span></p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="grid-activeOverview-item mb shadow p-2" >
+                        <h3>Top Level</h3>
+                        <div class="sub-grid mb p-2" v-for="(mActive, i) in topLevels">
+                            <img :src=" mActive.img" alt="" class="members-img">
+                       
+                        <div>
+                            <h5>{{   mActive.name }}</h5>
+                            <p style="color: #a7a7a7;">{{ mActive.level }} <span>Level</span></p>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="grid-activeOverview-item mb shadow p-2" >
+                        <h3>Top Beans</h3>
+                        <div class="sub-grid mb p-2" v-for="(mActive, i) in topBeans">
+                            <img :src=" mActive.img" alt="" class="members-img">
+                       
+                        <div>
+                            <h5>{{   mActive.name }}</h5>
+                            <p style="color: #a7a7a7;">{{ mActive.bean }} Beans</p>
+                        </div>
+                    </div>
+                    </div>
+                 
+                </div>
+            </div>
+             <!-- //active overview section end  -->
+        </div>
+      </main>
       <!-- main section end  -->
-    </div>
+  </div>
 
+
+    <!-- vue js link  -->
+    <script src="https://unpkg.com/vue@3"></script>
     <!-- icon link  -->
     <script
       type="module"
@@ -89,5 +206,9 @@
       nomodule
       src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
     ></script>
+    <script src="./script/chart.js"></script>
+
+    <script src="./script/index.js"></script>
+    
   </body>
 </html>
